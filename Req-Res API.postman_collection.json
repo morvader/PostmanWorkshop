@@ -1,0 +1,706 @@
+{
+	"info": {
+		"_postman_id": "95b909d4-cc23-4cba-9976-cddab9b68203",
+		"name": "Req-Res API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cookies and Schema",
+			"item": [
+				{
+					"name": "Cookies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+								"exec": [
+									"//check if the cookie exists",
+									"pm.expect(pm.cookies.has('__cfduid')).to.be.true;"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f92749a7-92f8-496f-8e01-690b45df92cc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SchemaValidation",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+								"exec": [
+									"const jsonData = pm.response.json();",
+									"",
+									"var schema = {",
+									"  \"definitions\": {},",
+									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
+									"  \"$id\": \"http://example.com/root.json\",",
+									"  \"type\": \"object\",",
+									"  \"title\": \"The Root Schema\",",
+									"  \"required\": [",
+									"    \"data\"",
+									"  ],",
+									"  \"properties\": {",
+									"    \"data\": {",
+									"      \"$id\": \"#/properties/data\",",
+									"      \"type\": \"object\",",
+									"      \"title\": \"The Data Schema\",",
+									"      \"required\": [",
+									"        \"id\",",
+									"        \"email\",",
+									"        \"first_name\",",
+									"        \"last_name\",",
+									"        \"avatar\"",
+									"      ],",
+									"      \"properties\": {",
+									"        \"id\": {",
+									"          \"$id\": \"#/properties/data/properties/id\",",
+									"          \"type\": \"integer\",",
+									"          \"title\": \"The Id Schema\",",
+									"          \"default\": 0,",
+									"          \"examples\": [",
+									"            1",
+									"          ]",
+									"        },",
+									"        \"email\": {",
+									"          \"$id\": \"#/properties/data/properties/email\",",
+									"          \"type\": \"string\",",
+									"          \"title\": \"The Email Schema\",",
+									"          \"default\": \"\",",
+									"          \"examples\": [",
+									"            \"george.bluth@reqres.in\"",
+									"          ],",
+									"          \"pattern\": \"^(.*)$\"",
+									"        },",
+									"        \"first_name\": {",
+									"          \"$id\": \"#/properties/data/properties/first_name\",",
+									"          \"type\": \"string\",",
+									"          \"title\": \"The First_name Schema\",",
+									"          \"default\": \"\",",
+									"          \"examples\": [",
+									"            \"George\"",
+									"          ],",
+									"          \"pattern\": \"^(.*)$\"",
+									"        },",
+									"        \"last_name\": {",
+									"          \"$id\": \"#/properties/data/properties/last_name\",",
+									"          \"type\": \"string\",",
+									"          \"title\": \"The Last_name Schema\",",
+									"          \"default\": \"\",",
+									"          \"examples\": [",
+									"            \"Bluth\"",
+									"          ],",
+									"          \"pattern\": \"^(.*)$\"",
+									"        },",
+									"        \"avatar\": {",
+									"          \"$id\": \"#/properties/data/properties/avatar\",",
+									"          \"type\": \"string\",",
+									"          \"title\": \"The Avatar Schema\",",
+									"          \"default\": \"\",",
+									"          \"examples\": [",
+									"            \"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg\"",
+									"          ],",
+									"          \"pattern\": \"^(.*)$\"",
+									"        }",
+									"      }",
+									"    }",
+									"  }",
+									"}",
+									"",
+									"pm.test('Schema is valid', function() {",
+									"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "PreRequest",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"eve.holt@reqres.in\",\r\n    \"password\": \"cityslicka\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PreRequest",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+								"exec": [
+									"let firstEmail = pm.environment.get(\"first_email\");",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].email).to.eql(firstEmail);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f92749a7-92f8-496f-8e01-690b45df92cc",
+								"exec": [
+									"let baseURL = pm.environment.get(\"url\");",
+									"",
+									"pm.sendRequest(baseURL + \"/users/1\", function (err, response) {",
+									"    const resp = response.json();",
+									"    pm.environment.set(\"first_email\", resp.data.email);",
+									"    console.log(resp);",
+									"});",
+									"",
+									"",
+									"var options = {",
+									"  'method': 'POST',",
+									"  'url': 'https://reqres.in/api/login',",
+									"  'header': {",
+									"    'Content-Type': 'application/json'",
+									"  },",
+									"  'body': JSON.stringify({\"email\":\"eve.holt@reqres.in\",\"password\":\"cityslicka\"})",
+									"",
+									"};",
+									"pm.sendRequest(options, function (error, response) { ",
+									"  if (error) throw new Error(error);",
+									"  console.log(response.json());",
+									"  pm.environment.set(\"token\", response.json().token);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GetUser1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+						"exec": [
+							"//Check status code",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"//Check ContentType header is present",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});",
+							"",
+							"//Check reposnse time",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});",
+							"",
+							"",
+							"//Read response",
+							"const jsonData = pm.response.json();",
+							"",
+							"//Debuggind. Data is shown at console",
+							"console.log(jsonData.data.email);",
+							"",
+							"pm.test(\"Check user email\", function () {",
+							"    pm.expect(jsonData.data.email).to.eql(\"george.bluth@reqres.in\");",
+							"});",
+							"",
+							"pm.test(\"Check property\", function () {",
+							"    pm.expect(jsonData.data).to.have.property('email');",
+							"});",
+							"    ",
+							"pm.test(\"Check if object contains all provided keys\", function () {",
+							"    pm.expect(jsonData.data).to.have.all.keys('id','email','first_name', 'last_name', 'avatar');",
+							"    pm.expect(jsonData.data).to.not.have.any.keys('age');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f92749a7-92f8-496f-8e01-690b45df92cc",
+						"exec": [
+							"//store test as function.",
+							"//Later we could eval this function to execute all tests",
+							"",
+							"var commonTests = () => {",
+							"    pm.test(\"Status code is 200\", function () {",
+							"        pm.response.to.have.status(200);",
+							"    });",
+							"    pm.test(\"Content-Type is present\", function () {",
+							"     pm.response.to.have.header(\"Content-Type\");",
+							"    });",
+							"    pm.test(\"Response time is less than 500ms\", function () {",
+							"        pm.expect(pm.response.responseTime).to.be.below(500);",
+							"    });",
+							"    ",
+							"};",
+							"",
+							"//store test as variable",
+							"pm.environment.set(\"commonTests\", commonTests.toString());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Arrays",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9c2b15ff-0482-42b9-ac2c-56cedcd9d806",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"//Check text is present in response",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"sand dollar\");",
+							"});",
+							"",
+							"//Check number of elements",
+							"pm.test(\"Check Length\", function () {",
+							"    pm.expect(jsonData.data.length).to.eql(6);",
+							"    ",
+							"    //Error message gives us more info",
+							"    pm.expect(jsonData.data).to.have.lengthOf(6);",
+							"",
+							"});",
+							"",
+							"//Find elements in response",
+							"//Use js functions",
+							"let blue = jsonData.data.find(element => element.name == \"blue iris\");",
+							"",
+							"console.log(blue);",
+							"",
+							"//check data of the found element",
+							"pm.test(\"Blue Iris found\", function () {",
+							"     pm.expect(blue).not.to.be.an('undefined');",
+							"     pm.expect(blue.color).eql('#5A5B9F');",
+							"     pm.expect(blue.year).to.be.a('number');",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/unknown?page=2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"unknown"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reuse Test Cases",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+						"exec": [
+							"//Get variable and evaluate it",
+							"",
+							"eval(pm.environment.get(\"commonTests\"))();",
+							"",
+							"const jsonData = pm.response.json();",
+							"",
+							"//Also we add another test",
+							"pm.test(\"Check value\", function () {",
+							"    pm.expect(jsonData.data.email).to.eql(\"janet.weaver@reqres.in\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RandomData + PreScipt",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5fda75e1-7d1a-458c-83bf-b2aadf866dca",
+						"exec": [
+							"//Store datetime to check inserted data is correct",
+							"const dateNow= new Date();",
+							"pm.environment.set('currentDate', dateNow.toISOString());",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "66d37a88-3947-457e-b491-fb5a5b987d55",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"let currentDate = new Date(pm.variables.get(\"currentDate\")); ",
+							"",
+							"pm.test(\"Status code is OK\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});",
+							"",
+							"//check data response is not empty",
+							"pm.test(\"Check data is not empty\", function () {",
+							"    pm.expect(jsonData.name).exist;",
+							"    pm.expect(jsonData.job).exist;",
+							"    pm.expect(parseInt(jsonData.id)).to.be.above(0);",
+							"",
+							"});",
+							"",
+							"//Check date is",
+							"pm.test(\"Check dates\", function () {",
+							"    pm.expect(new Date(jsonData.createdAt)).to.be.below(currentDate);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "reqres.in"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "origin",
+						"value": "https://reqres.in"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+					},
+					{
+						"key": "dnt",
+						"value": "1"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "referer",
+						"value": "https://reqres.in/"
+					},
+					{
+						"key": "accept-encoding",
+						"value": "gzip, deflate, br"
+					},
+					{
+						"key": "accept-language",
+						"value": "es-ES,es;q=0.9,en;q=0.8"
+					},
+					{
+						"key": "cookie",
+						"value": "__cfduid=dc0a1805adceba5e3bd14f4332eee0a001553890779"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"{{$randomFirstName}}\",\n\t\"job\": \"{{$randomJobType}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Import CSV - Run Collection",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a4cce8b8-3f87-4b14-b3ac-d27b87931155",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b370ef9c-a40e-4c15-ab95-facb21cc4d08",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check data is not empty\", function () {",
+							"    //read and use data from the CSV",
+							"    console.log(pm.iterationData.get(\"name\"));",
+							"    ",
+							"    pm.expect(jsonData.name).to.be.eql(pm.iterationData.get(\"name\"));",
+							"    pm.expect(jsonData.job).to.be.eql(pm.iterationData.get(\"job\"));",
+							"    ",
+							"    pm.expect(parseInt(jsonData.id)).to.be.above(0);",
+							"",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "reqres.in"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "origin",
+						"value": "https://reqres.in"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+					},
+					{
+						"key": "dnt",
+						"value": "1"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "referer",
+						"value": "https://reqres.in/"
+					},
+					{
+						"key": "accept-encoding",
+						"value": "gzip, deflate, br"
+					},
+					{
+						"key": "accept-language",
+						"value": "es-ES,es;q=0.9,en;q=0.8"
+					},
+					{
+						"key": "cookie",
+						"value": "__cfduid=dc0a1805adceba5e3bd14f4332eee0a001553890779"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"{{name}}\",\n\t\"job\": \"{{job}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
