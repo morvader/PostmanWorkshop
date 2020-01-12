@@ -59,84 +59,44 @@
 								"exec": [
 									"const jsonData = pm.response.json();",
 									"",
-									"var schema = {",
-									"  \"definitions\": {},",
-									"  \"$schema\": \"http://json-schema.org/draft-07/schema#\",",
-									"  \"$id\": \"http://example.com/root.json\",",
+									"var schema ={",
 									"  \"type\": \"object\",",
-									"  \"title\": \"The Root Schema\",",
-									"  \"required\": [",
-									"    \"data\"",
-									"  ],",
 									"  \"properties\": {",
 									"    \"data\": {",
-									"      \"$id\": \"#/properties/data\",",
 									"      \"type\": \"object\",",
-									"      \"title\": \"The Data Schema\",",
+									"      \"properties\": {",
+									"        \"id\": {",
+									"          \"type\": \"integer\"",
+									"        },",
+									"        \"email\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"first_name\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"last_name\": {",
+									"          \"type\": \"string\"",
+									"        },",
+									"        \"avatar\": {",
+									"          \"type\": \"string\"",
+									"        }",
+									"      },",
 									"      \"required\": [",
 									"        \"id\",",
 									"        \"email\",",
 									"        \"first_name\",",
 									"        \"last_name\",",
 									"        \"avatar\"",
-									"      ],",
-									"      \"properties\": {",
-									"        \"id\": {",
-									"          \"$id\": \"#/properties/data/properties/id\",",
-									"          \"type\": \"integer\",",
-									"          \"title\": \"The Id Schema\",",
-									"          \"default\": 0,",
-									"          \"examples\": [",
-									"            1",
-									"          ]",
-									"        },",
-									"        \"email\": {",
-									"          \"$id\": \"#/properties/data/properties/email\",",
-									"          \"type\": \"string\",",
-									"          \"title\": \"The Email Schema\",",
-									"          \"default\": \"\",",
-									"          \"examples\": [",
-									"            \"george.bluth@reqres.in\"",
-									"          ],",
-									"          \"pattern\": \"^(.*)$\"",
-									"        },",
-									"        \"first_name\": {",
-									"          \"$id\": \"#/properties/data/properties/first_name\",",
-									"          \"type\": \"string\",",
-									"          \"title\": \"The First_name Schema\",",
-									"          \"default\": \"\",",
-									"          \"examples\": [",
-									"            \"George\"",
-									"          ],",
-									"          \"pattern\": \"^(.*)$\"",
-									"        },",
-									"        \"last_name\": {",
-									"          \"$id\": \"#/properties/data/properties/last_name\",",
-									"          \"type\": \"string\",",
-									"          \"title\": \"The Last_name Schema\",",
-									"          \"default\": \"\",",
-									"          \"examples\": [",
-									"            \"Bluth\"",
-									"          ],",
-									"          \"pattern\": \"^(.*)$\"",
-									"        },",
-									"        \"avatar\": {",
-									"          \"$id\": \"#/properties/data/properties/avatar\",",
-									"          \"type\": \"string\",",
-									"          \"title\": \"The Avatar Schema\",",
-									"          \"default\": \"\",",
-									"          \"examples\": [",
-									"            \"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg\"",
-									"          ],",
-									"          \"pattern\": \"^(.*)$\"",
-									"        }",
-									"      }",
+									"      ]",
 									"    }",
-									"  }",
+									"  },",
+									"  \"required\": [",
+									"    \"data\"",
+									"  ]",
 									"}",
 									"",
 									"pm.test('Schema is valid', function() {",
-									"  pm.expect(tv4.validate(jsonData, schema)).to.be.true;",
+									"  pm.response.to.have.jsonSchema(schema);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -357,7 +317,184 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "GetUser1",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 12 Jan 2020 20:52:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"a9-UwHd951rLzNqzqItB0vTQAVbJ+k\""
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=14400"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "HIT"
+						},
+						{
+							"key": "Age",
+							"value": "4196"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "554203a52f29cdd7-CDG"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"email\": \"george.bluth@reqres.in\",\n        \"first_name\": \"George\",\n        \"last_name\": \"Bluth\",\n        \"avatar\": \"https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg\"\n    }\n}"
+				},
+				{
+					"name": "GetUserError",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 12 Jan 2020 20:52:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"a9-UwHd951rLzNqzqItB0vTQAVbJ+k\""
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "max-age=14400"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "HIT"
+						},
+						{
+							"key": "Age",
+							"value": "4196"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "554203a52f29cdd7-CDG"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\":\"Not found\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Arrays",
