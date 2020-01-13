@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "b14b8084-9a3e-4be3-9eb0-0e3cfdf13d52",
+		"name": "Req-Res - CSV",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Import CSV - Run Collection",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a4cce8b8-3f87-4b14-b3ac-d27b87931155",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b370ef9c-a40e-4c15-ab95-facb21cc4d08",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Check data is not empty\", function () {",
+							"    //read and use data from the CSV",
+							"    console.log(pm.iterationData.get(\"name\"));",
+							"    ",
+							"    pm.expect(jsonData.name).to.be.eql(pm.iterationData.get(\"name\"));",
+							"    pm.expect(jsonData.job).to.be.eql(pm.iterationData.get(\"job\"));",
+							"    ",
+							"    pm.expect(parseInt(jsonData.id)).to.be.above(0);",
+							"",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authority",
+						"value": "reqres.in"
+					},
+					{
+						"key": "pragma",
+						"value": "no-cache"
+					},
+					{
+						"key": "cache-control",
+						"value": "no-cache"
+					},
+					{
+						"key": "origin",
+						"value": "https://reqres.in"
+					},
+					{
+						"key": "user-agent",
+						"value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
+					},
+					{
+						"key": "dnt",
+						"value": "1"
+					},
+					{
+						"key": "content-type",
+						"value": "application/json"
+					},
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "sec-fetch-site",
+						"value": "same-origin"
+					},
+					{
+						"key": "sec-fetch-mode",
+						"value": "cors"
+					},
+					{
+						"key": "referer",
+						"value": "https://reqres.in/"
+					},
+					{
+						"key": "accept-encoding",
+						"value": "gzip, deflate, br"
+					},
+					{
+						"key": "accept-language",
+						"value": "es-ES,es;q=0.9,en;q=0.8"
+					},
+					{
+						"key": "cookie",
+						"value": "__cfduid=dc0a1805adceba5e3bd14f4332eee0a001553890779"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"{{name}}\",\n\t\"job\": \"{{job}}\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
