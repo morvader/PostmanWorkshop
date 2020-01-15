@@ -9,7 +9,7 @@ Un ejemplo típico podría ser declarados los entornos de Pruebas, Preproducció
 
 Tener las peticiones y los test parametrizados resulta muy útil que nos permitirá ejecutar las mismas pruebas sobre diferentes entornos con muy poco esfuerzo de mantenimiento.
 ### Acceso a variables desde peticiones
-Desde la URL, parámetros o body de las peticiones podremos acceder a las varibales del los entornos mediante: <b>{{NombreVariable}}</b>
+Desde la URL, parámetros o body de las peticiones podremos acceder a las variables del los entornos mediante: <b>{{NombreVariable}}</b>
 
 ### Acceso a variables desde los testing
 Desde los scripts de test podremos acceder acceder a las variable mediante: <b>pm.environment.get("variable_key");</b>
@@ -36,3 +36,13 @@ Al ejecutar las pruebas desde Newman, veremos el resultado de las mismas en pant
 Uno de los más interesantes y útiles es el desarrollado por Danny Dainton y que está disponible en [GitHub](https://github.com/DannyDainton/newman-reporter-htmlextra)
 
 ## Docker
+Podremos ejecutar las pruebas por línea de comandos utilizando la imagen docker [oficial](https://hub.docker.com/r/postman/newman/).
+
+Para ello, podemos utilizar el comando:
+
+<b>docker run -t postman/newman:alpine <URL_Coleccion> -e <URL_Entorno> </b>
+
+Para ficheros locales:
+
+<b>docker run -v ~/collections:/etc/newman -t postman/newman:alpine <Coleccion.json> -e <Entorno.json> </b>
+
