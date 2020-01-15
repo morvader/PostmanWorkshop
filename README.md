@@ -25,10 +25,29 @@ Por otro, la consola nos será de gran ayuda cuando estemos depurando nuestros t
 ## Preparación de la prueba
 
 ## Random Testing
+En algunas ocasiones puede resultar interesante realizar pruebas con datos pseudo-aleatorios para así introducir una incertidumbre controlada en nuestros casos de prueba. 
+
+Puede ser útil en diferentes tipos de escenarios: cuando el valor concreto de los datos no sea importante (ids, fechas, números de teléfono, etc) o cuando siempre importante, nos gustaría añadir cierta incertidumbre al test para comprobar que el sistema se comporta correctamente de manera consistente.
+
+Postman ofrece multitud de datos pseudo-aleatorios que podemos [utilizar](https://learning.getpostman.com/docs/postman/variables-and-environments/variables-list/), como por ejemplo:
+
+{{$randomZipCode}}
+
+{{$randomFirstName}}
+
+{{$randomJobType}}
+
+{{$randomProductName}}
+
+{{$randomMonth}}
+
+...
+
 
 ## Data Driven Testing
 
 ## Línea de comandos
+
 
 ## Reporting
 Al ejecutar las pruebas desde Newman, veremos el resultado de las mismas en pantalla. Pero si además queremos generar un informe debemos especificar su formato al lanzarlas. Mediante la opción "-r" , podremos indicar tanto formato como ruta de destino. [Más info](https://www.npmjs.com/package/newman#reporters)
