@@ -31,8 +31,6 @@ pm.test("Status code is 200", function () {
 });
 ```
 
-
-
 [Ejemplos de test en Postman](https://learning.getpostman.com/docs/postman/scripts/test-examples/)
 
 ## Preparación de la prueba
@@ -92,6 +90,24 @@ $ newman run mycollection.json -e MiEntorno.json
 
 $ newman run https://MiColeccion -e https://MiEntorno
 
+## CI con Jenkins
+Uno de los servidores más utilizados para tareas de integración continua es Jenkins. Éste, no deja de ser un gestor de tareas, por lo que podremos hacer que las pruebas de APIs se ejecuten como paso de nuestro pipeline de integración.
+
+Para probar el ejemplo:
+- 1 Construir la imagen docker: Contiene jenkins con nodeJS y newman instalado
+
+docker build --rm -f "Dockerfile" -t jenkinsnewman "."
+
+- 2 Ejecutar la imagen creada
+
+docker run --rm -d -p 50000:50000/tcp -p 8080:8080/tcp jenkinsnewman:latest
+
+- 3 Conectarse a localhost:8080 , completar la instalación de jenkins
+- 4 Crear una tarea que contenta la ejecución de un comando shell
+- 5 Introducir el comando newman para ejecutar las pruebas en modo consola. Por ejemplo:
+  
+  newman run https://raw.githubusercontent.com/morvader/PostmanWorkshop/master/Req-ResAPI.postman_collection.json \
+   -e https://raw.githubusercontent.com/morvader/PostmanWorkshop/master/Req-RES.postman_environment.json
 
 ## Reporting
 Al ejecutar las pruebas desde Newman, veremos el resultado de las mismas en pantalla. Pero si además queremos generar un informe debemos especificar su formato al lanzarlas. Mediante la opción "-r" , podremos indicar tanto formato como ruta de destino. [Más info](https://www.npmjs.com/package/newman#reporters)

@@ -162,24 +162,9 @@
 					"name": "PreRequest",
 					"event": [
 						{
-							"listen": "test",
-							"script": {
-								"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
-								"exec": [
-									"let firstEmail = pm.environment.get(\"first_email\");",
-									"",
-									"pm.test(\"Your test name\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.data[0].email).to.eql(firstEmail);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f92749a7-92f8-496f-8e01-690b45df92cc",
+								"id": "e75114a4-5e7b-4b99-a74b-7b440fa0bf5d",
 								"exec": [
 									"let baseURL = pm.environment.get(\"url\");",
 									"",
@@ -189,7 +174,9 @@
 									"    console.log(resp);",
 									"});",
 									"",
-									"",
+									"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+									"    console.log(response.json());",
+									"});",
 									"var options = {",
 									"  'method': 'POST',",
 									"  'url': 'https://reqres.in/api/login',",
@@ -205,6 +192,21 @@
 									"  pm.environment.set(\"token\", response.json().token);",
 									"});",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "e3eae539-e1b2-45f8-8025-6f40d31f00dc",
+								"exec": [
+									"let firstEmail = pm.environment.get(\"first_email\");",
+									"",
+									"pm.test(\"Your test name\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data[0].email).to.eql(firstEmail);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -605,26 +607,13 @@
 			"name": "RandomData + PreScipt",
 			"event": [
 				{
-					"listen": "prerequest",
-					"script": {
-						"id": "5fda75e1-7d1a-458c-83bf-b2aadf866dca",
-						"exec": [
-							"//Store datetime to check inserted data is correct",
-							"const dateNow= new Date();",
-							"pm.environment.set('currentDate', dateNow.toISOString());",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
 					"listen": "test",
 					"script": {
-						"id": "66d37a88-3947-457e-b491-fb5a5b987d55",
+						"id": "418d9567-ad4f-4a63-ac4b-15f247790079",
 						"exec": [
 							"var jsonData = pm.response.json();",
 							"",
-							"let currentDate = new Date(pm.variables.get(\"currentDate\")); ",
+							"let yesterday = new Date(pm.variables.get(\"yesterday\")); ",
 							"",
 							"pm.test(\"Status code is OK\", function () {",
 							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
@@ -640,9 +629,23 @@
 							"",
 							"//Check date is",
 							"pm.test(\"Check dates\", function () {",
-							"    pm.expect(new Date(jsonData.createdAt)).to.be.below(currentDate);",
+							"    pm.expect(new Date(jsonData.createdAt)).to.be.above(yesterday);",
 							"});",
 							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0ac63f8b-3a3a-4a8f-b184-ff8812f1569e",
+						"exec": [
+							"//Store datetime to check inserted data is correct",
+							"const dateNow = new Date();",
+							"let yesterday = dateNow.setDate(dateNow.getDate() - 1);",
+							"pm.environment.set('yesterday', dateNow.toISOString());",
 							""
 						],
 						"type": "text/javascript"
