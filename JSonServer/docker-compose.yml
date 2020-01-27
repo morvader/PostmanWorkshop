@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  json-server:
+    image: clue/json-server
+    ports:
+      - "3000:80"
+    volumes:
+      - ./:/data/
+    container_name: postman_json_server
+    restart: always
