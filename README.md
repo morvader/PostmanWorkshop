@@ -119,6 +119,9 @@ Al ejecutar las pruebas desde Newman, veremos el resultado de las mismas en pant
 
 Uno de los más interesantes y útiles es el desarrollado por Danny Dainton y que está disponible en [GitHub](https://github.com/DannyDainton/newman-reporter-htmlextra)
 
+`$ newman run mycollection.json -e MiEntorno.json -r htmlextra
+`
+
 ## Docker
 Podremos ejecutar las pruebas por línea de comandos utilizando la imagen docker [oficial](https://github.com/postmanlabs/newman/tree/develop/docker/).
 
