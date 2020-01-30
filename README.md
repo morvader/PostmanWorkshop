@@ -130,7 +130,7 @@ Podremos ejecutar las pruebas por línea de comandos utilizando la imagen docker
 Para ello, podemos utilizar el comando:
 
 ```
-docker run -v ${PWD}:/etc/newman --rm -t postman/newman:ubuntu run https://raw.githubusercontent.com/morvader/PostmanWorkshop/master/Req-ResAPI.postman_collection.json -e https://raw.githubusercontent.com/morvader/PostmanWorkshop/master/Req-RES.postman_environment.json
+docker run --rm -t postman/newman:ubuntu run https://raw.githubusercontent.com/morvader/PostmanWorkshop/master/Req-ResAPI.postman_collection.json -e https://raw.githubusercontent.com/morvader/PostmanWorkshop/master/Req-RES.postman_environment.json
 ```
 
 Para ficheros locales:
