@@ -59,6 +59,7 @@ Puede ser útil en diferentes tipos de escenarios: cuando el valor concreto de l
 
 Postman ofrece multitud de datos pseudo-aleatorios que podemos [utilizar](https://learning.getpostman.com/docs/postman/variables-and-environments/variables-list/), como por ejemplo:
 
+```
 {{$randomZipCode}}
 
 {{$randomFirstName}}
@@ -70,6 +71,7 @@ Postman ofrece multitud de datos pseudo-aleatorios que podemos [utilizar](https:
 {{$randomMonth}}
 
 ...
+```
 
 
 ## Data Driven Testing

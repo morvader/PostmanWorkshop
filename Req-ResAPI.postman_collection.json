@@ -174,9 +174,6 @@
 									"    console.log(resp);",
 									"});",
 									"",
-									"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
-									"    console.log(response.json());",
-									"});",
 									"var options = {",
 									"  'method': 'POST',",
 									"  'url': 'https://reqres.in/api/login',",
@@ -499,6 +496,47 @@
 			]
 		},
 		{
+			"name": "Reuse Test Cases",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+						"exec": [
+							"//Get variable and evaluate it",
+							"",
+							"eval(pm.environment.get(\"commonTests\"))();",
+							"",
+							"const jsonData = pm.response.json();",
+							"",
+							"//Also we add another test",
+							"pm.test(\"Check value\", function () {",
+							"    pm.expect(jsonData.data.email).to.eql(\"janet.weaver@reqres.in\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/users/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Arrays",
 			"event": [
 				{
@@ -557,47 +595,6 @@
 							"key": "page",
 							"value": "2"
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Reuse Test Cases",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
-						"exec": [
-							"//Get variable and evaluate it",
-							"",
-							"eval(pm.environment.get(\"commonTests\"))();",
-							"",
-							"const jsonData = pm.response.json();",
-							"",
-							"//Also we add another test",
-							"pm.test(\"Check value\", function () {",
-							"    pm.expect(jsonData.data.email).to.eql(\"janet.weaver@reqres.in\");",
-							"});",
-							"",
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/users/2",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"users",
-						"2"
 					]
 				}
 			},
