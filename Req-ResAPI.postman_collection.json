@@ -55,7 +55,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+								"id": "42d09192-f1fc-4769-bf66-a62f8901924f",
 								"exec": [
 									"const jsonData = pm.response.json();",
 									"",
@@ -233,7 +233,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+						"id": "aa3a9244-5e1a-4114-a5ca-bbcf258be97f",
 						"exec": [
 							"//Check status code",
 							"pm.test(\"Status code is 200\", function () {",
@@ -267,7 +267,7 @@
 							"    ",
 							"pm.test(\"Check if object contains all provided keys\", function () {",
 							"    pm.expect(jsonData.data).to.have.all.keys('id','email','first_name', 'last_name', 'avatar');",
-							"    pm.expect(jsonData.data).to.not.have.any.keys('age');",
+							"    pm.expect(jsonData.data).to.not.have.any.keys('email');",
 							"});",
 							""
 						],
@@ -277,7 +277,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f92749a7-92f8-496f-8e01-690b45df92cc",
+						"id": "afb15d59-6f22-4527-867a-8d49f4c2e42e",
 						"exec": [
 							"//store test as function.",
 							"//Later we could eval this function to execute all tests",
@@ -501,7 +501,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "122fa0e0-a60b-425d-9eb6-fa5d97c98e18",
+						"id": "625c9af1-72d0-46ed-80bf-80aa41ade6d6",
 						"exec": [
 							"//Get variable and evaluate it",
 							"",
@@ -542,7 +542,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9c2b15ff-0482-42b9-ac2c-56cedcd9d806",
+						"id": "80960317-bec5-4a12-b4be-5736c0abb971",
 						"exec": [
 							"const jsonData = pm.response.json();",
 							"",
@@ -552,7 +552,7 @@
 							"});",
 							"",
 							"//Check number of elements",
-							"pm.test(\"Check Length\", function () {",
+							"pm.test(\"Hola\", function () {",
 							"    pm.expect(jsonData.data.length).to.eql(6);",
 							"    ",
 							"    //Error message gives us more info",
@@ -604,9 +604,23 @@
 			"name": "RandomData + PreScipt",
 			"event": [
 				{
+					"listen": "prerequest",
+					"script": {
+						"id": "44c0538b-e50a-4ae2-a2e8-2ff911c9136b",
+						"exec": [
+							"//Store datetime to check inserted data is correct",
+							"const dateNow = new Date();",
+							"let yesterday = dateNow.setDate(dateNow.getDate() - 1);",
+							"pm.variables.set('yesterday', dateNow.toISOString());",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
 					"listen": "test",
 					"script": {
-						"id": "418d9567-ad4f-4a63-ac4b-15f247790079",
+						"id": "7aa165c6-623a-4315-a9cc-007aabfbc728",
 						"exec": [
 							"var jsonData = pm.response.json();",
 							"",
@@ -629,20 +643,6 @@
 							"    pm.expect(new Date(jsonData.createdAt)).to.be.above(yesterday);",
 							"});",
 							"",
-							""
-						],
-						"type": "text/javascript"
-					}
-				},
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "0ac63f8b-3a3a-4a8f-b184-ff8812f1569e",
-						"exec": [
-							"//Store datetime to check inserted data is correct",
-							"const dateNow = new Date();",
-							"let yesterday = dateNow.setDate(dateNow.getDate() - 1);",
-							"pm.environment.set('yesterday', dateNow.toISOString());",
 							""
 						],
 						"type": "text/javascript"
