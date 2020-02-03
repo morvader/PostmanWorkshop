@@ -267,7 +267,7 @@
 							"    ",
 							"pm.test(\"Check if object contains all provided keys\", function () {",
 							"    pm.expect(jsonData.data).to.have.all.keys('id','email','first_name', 'last_name', 'avatar');",
-							"    pm.expect(jsonData.data).to.not.have.any.keys('email');",
+							"    pm.expect(jsonData.data).to.not.have.any.keys('age');",
 							"});",
 							""
 						],
