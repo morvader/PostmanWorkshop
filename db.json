@@ -25,36 +25,6 @@
       "body": "delectus reiciendis molestiae occaecati non"
     }
   ],
-  "comments": [
-    {
-      "postId": 1,
-      "id": 1,
-      "name": "id labore ex et quam laborum",
-      "email": "Eliseo@gardner.biz",
-      "body": "laudantium enim"
-    },
-    {
-      "postId": 1,
-      "id": 2,
-      "name": "quo vero reiciendis velit similique earum",
-      "email": "Jayne_Kuhic@sydney.com",
-      "body": "oluptatem reiciendis et"
-    },
-    {
-      "postId": 7,
-      "id": 33,
-      "name": "voluptatum totam vel voluptate omnis",
-      "email": "Jaeden.Towne@arlene.tv",
-      "body": "fugit atibus"
-    },
-    {
-      "postId": 7,
-      "id": 34,
-      "name": "omnis nemo sunt ab autem",
-      "email": "Ethelyn.Schneider@emelia.co.uk",
-      "body": "omnis temporibusit"
-    }
-  ],
   "albums": [
     {
       "userId": 1,
@@ -75,22 +45,6 @@
       "userId": 1,
       "id": 4,
       "title": "non esse culpa molestiae omnis sed optio"
-    }
-  ],
-  "photos": [
-    {
-      "albumId": 1,
-      "id": 1,
-      "title": "accusamus beatae ad facilis cum similique qui sunt",
-      "url": "http://placehold.it/600/92c952",
-      "thumbnailUrl": "http://placehold.it/150/92c952"
-    },
-    {
-      "albumId": 1,
-      "id": 8,
-      "title": "aut porro officiis laborum odit ea laudantium corporis",
-      "url": "http://placehold.it/600/54176f",
-      "thumbnailUrl": "http://placehold.it/150/54176f"
     }
   ],
   "todos": [
