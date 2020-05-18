@@ -23,30 +23,6 @@
       "id": 11,
       "title": "et ea vero quia laudantium autem",
       "body": "delectus reiciendis molestiae occaecati non minima eveniet qui voluptatibus\naccusamus in eum beatae sit\nvel qui neque voluptates ut commodi qui incidunt\nut animi commodi"
-    },
-    {
-      "userId": 2,
-      "id": 12,
-      "title": "in quibusdam tempore odit est dolorem",
-      "body": "itaque id aut magnam\npraesentium quia et ea odit et ea voluptas et\nsapiente quia nihil amet occaecati quia id voluptatem\nincidunt ea est distinctio odio"
-    },
-    {
-      "userId": 3,
-      "id": 23,
-      "title": "maxime id vitae nihil numquam",
-      "body": "veritatis unde neque eligendi\nquae quod architecto quo neque vitae\nest illo sit tempora doloremque fugit quod\net et vel beatae sequi ullam sed tenetur perspiciatis"
-    },
-    {
-      "userId": 5,
-      "id": 41,
-      "title": "non est facere",
-      "body": "molestias id nostrum\nexcepturi molestiae dolore omnis repellendus quaerat saepe\nconsectetur iste quaerat tenetur asperiores accusamus ex ut\nnam quidem est ducimus sunt debitis saepe"
-    },
-    {
-      "userId": 5,
-      "id": 42,
-      "title": "commodi ullam sint et excepturi error explicabo praesentium voluptas",
-      "body": "odio fugit voluptatum ducimus earum autem est incidunt voluptatem\nodit reiciendis aliquam sunt sequi nulla dolorem\nnon facere repellendus voluptates quia\nratione harum vitae ut"
     }
   ],
   "comments": [
@@ -65,27 +41,6 @@
       "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
     },
     {
-      "postId": 1,
-      "id": 3,
-      "name": "odio adipisci rerum aut animi",
-      "email": "Nikita@garfield.biz",
-      "body": "quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"
-    },
-    {
-      "postId": 1,
-      "id": 4,
-      "name": "alias odio sit",
-      "email": "Lew@alysha.tv",
-      "body": "non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati"
-    },
-    {
-      "postId": 7,
-      "id": 32,
-      "name": "dolorem architecto ut pariatur quae qui suscipit",
-      "email": "Maria@laurel.name",
-      "body": "nihil ea itaque libero illo\nofficiis quo quo dicta inventore consequatur voluptas voluptatem\ncorporis sed necessitatibus velit tempore\nrerum velit et temporibus"
-    },
-    {
       "postId": 7,
       "id": 33,
       "name": "voluptatum totam vel voluptate omnis",
@@ -98,14 +53,7 @@
       "name": "omnis nemo sunt ab autem",
       "email": "Ethelyn.Schneider@emelia.co.uk",
       "body": "omnis temporibus quasi ab omnis\nfacilis et omnis illum quae quasi aut\nminus iure ex rem ut reprehenderit\nin non fugit"
-    },
-    {
-      "postId": 7,
-      "id": 35,
-      "name": "repellendus sapiente omnis praesentium aliquam ipsum id molestiae omnis",
-      "email": "Georgianna@florence.io",
-      "body": "dolor mollitia quidem facere et\nvel est ut\nut repudiandae est quidem dolorem sed atque\nrem quia aut adipisci sunt"
-    },
+    }
   ],
   "albums": [
     {
@@ -162,24 +110,6 @@
       "userId": 1,
       "id": 3,
       "title": "fugiat veniam minus",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 4,
-      "title": "et porro tempora",
-      "completed": true
-    },
-    {
-      "userId": 1,
-      "id": 5,
-      "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-      "completed": false
-    },
-    {
-      "userId": 1,
-      "id": 6,
-      "title": "qui ullam ratione quibusdam voluptatem quia omnis",
       "completed": false
     }
   ],
